@@ -769,32 +769,37 @@ footer {
           <div class="c-detail-row"><div class="c-detail-label">Projects</div><div class="c-detail-value">Typically 2–4 week lead time for B2B content</div></div>
         </div>
       </div>
-      <div class="contact-form reveal reveal-delay-1">
-        <div class="form-row">
-          <div class="form-group"><label>First Name</label><input type="text" placeholder="Jane"></div>
-          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith"></div>
-        </div>
-        <div class="form-group"><label>Company</label><input type="text" placeholder="Acme Corp"></div>
-        <div class="form-group"><label>Work Email</label><input type="email" placeholder="jane@acmecorp.com"></div>
-        <div class="form-group">
-          <label>What are you working on?</label>
-          <select>
-            <option value="">Select a service</option>
-            <option>Product Launch</option>
-            <option>Technical Deep-Dive</option>
-            <option>Application Story</option>
-            <option>Engineering Demo</option>
-            <option>Trade Show Package</option>
-            <option>Knowledge Series</option>
-            <option>Sales Enablement</option>
-            <option>Something else</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Tell us more</label><textarea placeholder="Give us the brief — or just describe the problem you're trying to solve. Either works."></textarea></div>
-        <div class="form-footer">
-          <button class="btn-send" id="submitBtn">Send Message</button>
-          <span class="form-note">We respond within one business day.</span>
-        </div>
+      <form class="contact-form reveal reveal-delay-1" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="2319dbd1-2d1d-4a75-bc3f-a4e5634b65d5">
+  <input type="hidden" name="subject" value="New Project Inquiry — One Atom Content Labs">
+  <input type="hidden" name="redirect" value="false">
+
+  <div class="form-row">
+    <div class="form-group"><label>First Name</label><input type="text" name="first_name" placeholder="Jane" required></div>
+    <div class="form-group"><label>Last Name</label><input type="text" name="last_name" placeholder="Smith" required></div>
+  </div>
+  <div class="form-group"><label>Company</label><input type="text" name="company" placeholder="Acme Corp"></div>
+  <div class="form-group"><label>Work Email</label><input type="email" name="email" placeholder="jane@acmecorp.com" required></div>
+  <div class="form-group">
+    <label>What are you working on?</label>
+    <select name="service">
+      <option value="">Select a service</option>
+      <option>Product Launch</option>
+      <option>Technical Deep-Dive</option>
+      <option>Application Story</option>
+      <option>Engineering Demo</option>
+      <option>Trade Show Package</option>
+      <option>Knowledge Series</option>
+      <option>Sales Enablement</option>
+      <option>Something else</option>
+    </select>
+  </div>
+  <div class="form-group"><label>Tell us more</label><textarea name="message" placeholder="Give us the brief — or just describe the problem you're trying to solve. Either works."></textarea></div>
+  <div class="form-footer">
+    <button type="submit" class="btn-send" id="submitBtn">Send Message</button>
+    <span class="form-note">We respond within one business day.</span>
+  </div>
+</form>
       </div>
     </div>
   </div>
@@ -828,9 +833,17 @@ footer {
     }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
     reveals.forEach(el => obs.observe(el));
   }
-  document.getElementById('submitBtn').addEventListener('click', function() {
-    this.textContent = 'Sending…'; this.disabled = true; this.style.background = '#8B95A8';
-    setTimeout(() => { this.textContent = 'Sent ✓'; this.style.background = '#0e7a4e'; }, 1200);
+  document.querySelector('form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending…'; btn.disabled = true; btn.style.background = '#8B95A8';
+    const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(this) });
+    const data = await res.json();
+    if (data.success) {
+      btn.textContent = 'Sent ✓'; btn.style.background = '#0e7a4e';
+    } else {
+      btn.textContent = 'Failed — try again'; btn.style.background = '#e53e3e'; btn.disabled = false;
+    }
   });
 </script>
 </body>
