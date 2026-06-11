@@ -841,6 +841,8 @@ footer {
     const data = await res.json();
     if (data.success) {
       btn.textContent = 'Sent ✓'; btn.style.background = '#0e7a4e';
+document.querySelector('form').reset();
+setTimeout(() => { btn.textContent = 'Send Message'; btn.disabled = false; btn.style.background = ''; }, 3000);
     } else {
       btn.textContent = 'Failed — try again'; btn.style.background = '#e53e3e'; btn.disabled = false;
     }
