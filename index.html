@@ -12,13 +12,13 @@
 :root {
   --bg: #0A0A0A;
   --bg-warm: #111111;
-  --surface: #161616;
+  --surface: #1C1C1C;
   --ink: #FAFAFA;
   --ink-soft: #E4E4E4;
   --text: #B0B0B0;
   --muted: #7A7A7A;
-  --rule: rgba(255,255,255,0.08);
-  --rule-soft: rgba(255,255,255,0.04);
+  --rule: rgba(255,255,255,0.12);
+  --rule-soft: rgba(255,255,255,0.06);
   --purple: #8B6FFF;
   --purple-light: #A08AFF;
   --orange: #FF5C1A;
@@ -211,12 +211,28 @@ nav {
  to { transform: translateX(-50%); } }
 
 /* ── SECTIONS ── */
-section { padding: 160px 0; }
+section {
+  padding: 160px 0;
+  position: relative;
+}
+section + section::before {
+  content: '';
+  position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 1px;
+  background: var(--orange);
+  opacity: 0.4;
+}
 .container { max-width: 1200px; margin: 0 auto; padding: 0 64px; }
 .section-label {
   font-family: var(--mono); font-size: 11px; text-transform: uppercase;
-  letter-spacing: 0.14em; color: var(--orange); margin-bottom: 18px;
+  letter-spacing: 0.14em; color: var(--orange); margin-bottom: 24px;
   font-weight: 500;
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(255,92,26,0.08);
+  border: 1px solid rgba(255,92,26,0.2);
+  border-radius: 100px;
 }
 .section-title {
   font-size: clamp(36px, 4vw, 56px); font-weight: 700;
