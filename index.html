@@ -27,6 +27,7 @@
   --font: 'Inter', sans-serif;
   --mono: 'DM Mono', monospace;
   --radius: 10px;
+  --section-space: 48px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -208,15 +209,14 @@ nav {
   font-weight: 500;
 }
 
- to { transform: translateX(-50%); }
-
 /* ── SECTIONS ── */
-section {
-  padding: 160px 0;
+.page-section {
+  padding-block: var(--section-space);
   position: relative;
+  scroll-margin-top: 88px;
 }
 
-section + section::before {
+.page-section + .page-section::before {
   content: '';
   position: absolute; top: 0; left: 50%;
   transform: translateX(-50%);
@@ -242,7 +242,7 @@ section + section::before {
 }
 
 /* ── APPROACH ── */
-#approach { background: transparent; padding-bottom: 220px; }
+#approach { background: transparent; }
 .approach-intro {
   display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
   margin-bottom: 72px;
@@ -290,7 +290,7 @@ section + section::before {
 .p-desc { font-size: 14px; color: var(--text); line-height: 1.7; transition: color 0.3s; }
 
 /* ── WORK ── */
-#work { background: transparent; padding-top: 220px; }
+#work { background: transparent; }
 .work-grid {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
   max-width: 1100px; margin: 0 auto 40px;
@@ -601,6 +601,7 @@ footer {
 .reveal-delay-3 { transition-delay: 0.24s; }
 
 @media (max-width: 1024px) {
+  :root { --section-space: 40px; }
   #hero { grid-template-columns: 1fr; }
   .hero-right { min-height: 60vw; padding: 32px; }
   .approach-intro { grid-template-columns: 1fr; gap: 24px; }
@@ -613,11 +614,11 @@ footer {
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
 }
 @media (max-width: 768px) {
+  :root { --section-space: 32px; }
   nav { padding: 0 24px; }
   .nav-links { display: none; }
   .container { padding: 0 24px; }
   .hero-left { padding: 56px 24px 48px; }
-  section { padding: 100px 0; }
   .pillars-grid { grid-template-columns: 1fr; }
   .offerings-grid { grid-template-columns: 1fr; }
   .work-subgrid { grid-template-columns: 1fr; }
@@ -696,7 +697,7 @@ footer {
 
 
 <!-- APPROACH -->
-<section id="approach">
+<section id="approach" class="page-section">
   <div class="container">
     <div class="section-label reveal">01 &nbsp; &nbsp; Approach</div>
     <h2 class="section-title reveal">How we think about content.</h2>
@@ -730,7 +731,7 @@ footer {
 </section>
 
 <!-- WORK -->
-<section id="work">
+<section id="work" class="page-section">
   <div class="container">
     <div class="section-label reveal">02 &nbsp; &nbsp; Selected Work</div>
     <h2 class="section-title reveal">Some of our work.</h2>
@@ -931,7 +932,7 @@ footer {
 
 
 <!-- SERVICES -->
-<section id="services">
+<section id="services" class="page-section">
   <div class="container">
     <div class="section-label reveal">03 &nbsp; &nbsp; Services</div>
     <h2 class="section-title reveal">Our Offerings.</h2>
@@ -973,7 +974,7 @@ footer {
 </section>
 
 <!-- CLIENTS -->
-<section id="clients">
+<section id="clients" class="page-section">
   <div class="container">
     <div class="section-label reveal">04 &nbsp; &nbsp; Clients</div>
     <h2 class="section-title reveal">Who we work with.</h2>
@@ -999,7 +1000,7 @@ footer {
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="page-section">
   <div class="container">
     <div class="section-label reveal">05 &nbsp; &nbsp; Contact</div>
     <h2 class="section-title reveal">Start a conversation.</h2>
