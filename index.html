@@ -216,20 +216,14 @@ nav {
   scroll-margin-top: 88px;
 }
 
-.page-section + .page-section::before {
-  content: '';
-  position: absolute; top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 60px; height: 1px;
-  background: var(--orange);
-  opacity: 0.4;
-}
 .container { max-width: 1200px; margin: 0 auto; padding: 0 64px; }
 .section-label {
   font-family: var(--mono); font-size: 11px; text-transform: uppercase;
   letter-spacing: 0.14em; color: var(--orange); margin-bottom: 24px;
   font-weight: 500;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   line-height: 1.4;
 }
 .section-title {
@@ -696,7 +690,7 @@ footer {
 <!-- APPROACH -->
 <section id="approach" class="page-section">
   <div class="container">
-    <div class="section-label reveal">01 &nbsp; &nbsp; Approach</div>
+    <div class="section-label reveal"><span>01</span><span>Approach</span></div>
     <h2 class="section-title reveal">How we think about content.</h2>
     <div class="approach-intro reveal">
       <p>We don't make video for views. We make video for <strong>outcomes</strong>. The kind that move procurement decisions, investor conversations, and sales cycles.</p>
@@ -730,7 +724,7 @@ footer {
 <!-- WORK -->
 <section id="work" class="page-section">
   <div class="container">
-    <div class="section-label reveal">02 &nbsp; &nbsp; Selected Work</div>
+    <div class="section-label reveal"><span>02</span><span>Selected Work</span></div>
     <h2 class="section-title reveal">Some of our work.</h2>
     <div class="work-grid">
       <div class="work-item reveal">
@@ -931,7 +925,7 @@ footer {
 <!-- SERVICES -->
 <section id="services" class="page-section">
   <div class="container">
-    <div class="section-label reveal">03 &nbsp; &nbsp; Services</div>
+    <div class="section-label reveal"><span>03</span><span>Services</span></div>
     <h2 class="section-title reveal">Our Offerings.</h2>
     <div class="offerings-grid">
       <div class="offering reveal">
@@ -973,7 +967,7 @@ footer {
 <!-- CLIENTS -->
 <section id="clients" class="page-section">
   <div class="container">
-    <div class="section-label reveal">04 &nbsp; &nbsp; Clients</div>
+    <div class="section-label reveal"><span>04</span><span>Clients</span></div>
     <h2 class="section-title reveal">Who we work with.</h2>
     <p class="clients-intro reveal">From Fortune 500 technology firms to global luxury houses, performance brands to private equity. Our clients share a single requirement: production that holds up against the world's best.</p>
     <div class="clients-grid">
@@ -999,7 +993,7 @@ footer {
 <!-- CONTACT -->
 <section id="contact" class="page-section">
   <div class="container">
-    <div class="section-label reveal">05 &nbsp; &nbsp; Contact</div>
+    <div class="section-label reveal"><span>05</span><span>Contact</span></div>
     <h2 class="section-title reveal">Start a conversation.</h2>
     <div class="contact-grid">
       <div class="contact-info reveal">
